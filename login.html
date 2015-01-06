@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <form role="form" >
+  
+<div class="form-group">
+    <label for="exampleInputUserName">UserName</label>
+    <input type="text" class="form-control" placeholder="Enter Username" id="Naam">
+  </div>
+
+
+<div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control"  placeholder="Password" id="Password">
+  </div>
+
+
+<button type="button" class="btn btn-default" onclick=ajax_function()>Submit</button>
+</form>
+
+
+<script>
+
+
+function ajax_function()
+{
+
+var name=document.getElementById("Naam").value;
+var password=document.getElementById("Password").value;
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST","login.php",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("name="+name+"&password="+password);
+
+}
+
+
+
+
+
+
+</script>
+
+<p id="myDiv"> </p>
+
+
+
+
+
+
+
+
+</body>
+</html>

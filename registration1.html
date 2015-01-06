@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+<form role="form" >
+  
+<div class="form-group">
+    <label for="exampleInputUserName">UserName</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter Username" id="name">
+  </div>
+
+
+<div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="Password" id="password">
+  </div>
+
+
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" name="email" placeholder="Enter email" id="email">
+  </div>
+
+  <div class="form-group">   
+  <label for="exampleInputUserName">Gender</label>
+  <select class="form-control" id="gender">
+  <option>Male</option>
+  <option>Female</option>
+  
+</select>
+</div>
+  
+  <div class="form-group">
+    <label for="exampleInputUserName">Mobile Number</label>
+    <input type="text" class="form-control" name="mobile_number" placeholder="Enter in form 7895435021" id="mobile_number">
+  </div>
+
+  <div class="form-group">
+    <label for="exampleInputUserName">Address</label>
+    <input type="text" class="form-control" name="address" placeholder="Enter Address" id="address">
+  </div>
+  
+  <button type="button" class="btn btn-default" onclick=myfunction()>Submit</button>
+</form>
+
+<p id="answer"> </p>
+
+
+<script>
+function myfunction()
+{
+var name=document.getElementById("name").value;
+var password=document.getElementById("password").value;
+var email=document.getElementById("email").value;
+var gender=document.getElementById("gender").value;
+var mobile_number=document.getElementById("mobile_number").value;
+var address=document.getElementById("address").value;
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+    }
+  }
+xmlhttp.open("POST","registration.php",true);
+xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+xmlhttp.send("name="+name+"&password="+password+"&email="+email+"&gender="+gender+"&mobile_number="+mobile_number+"&address="+address);
+}
+
+
+</script>
+
+
+
+<p id="myDiv"> </p>
+
+
+
+</body>
+</html>
