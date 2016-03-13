@@ -8,18 +8,7 @@ $address=$_POST["address"];
 
 
 
-
-$servername = "mysql.1freehosting.com";
-$username = "u452418890_test";
-$password = "cricket_123";
-$dbname = "u452418890_test";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include ('credentials.php');
 
 $sql = "INSERT INTO university_record(UserName, Pass_Word, email, gender, mobile_number, address)
 VALUES ('$name', '$pass_word', '$email','$gender',$mobile_number,'$address')";
