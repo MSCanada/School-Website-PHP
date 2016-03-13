@@ -4,18 +4,7 @@ $pass_word=$_POST["password"];
 
 
 
-
-$servername = "mysql.1freehosting.com";
-$username = "u452418890_test";
-$password = "cricket_123";
-$dbname = "u452418890_test";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include ('credentials.php');
 
 $sql = "select * from university_record where UserName=".("'").$name.("'");
 $result = $conn->query($sql);
@@ -35,15 +24,26 @@ $address=$row["address"];
 
     if ($pass_word==$Pass_Word)
     {
-	echo "You are logged In"."<br>";
-echo $Email."<br>";
-echo $Gender."<br>";
-echo $Mobile_number."<br>";
-echo $address."<br>";
+		session_start();
+		$_SESSION['Mobile_number']=$Mobile_number;
+	
+	echo "You are logged In...!"."<br>";
+	echo $Email."<br>";
+	echo $Gender."<br>";
+	echo $Mobile_number."<br>";
+	echo $address."<br>";
+	
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?option=dashboard">';//This causes the browser to open the new page after 0 seconds, i.e immediately.
 
 
 
-}
+exit();  ?>
+	
+	<?php
+	echo '<script type="text/javascript">
+			  document.location.href = "http://www.example.com/index.php";  
+		  </script>';
+	}
 
 
 
