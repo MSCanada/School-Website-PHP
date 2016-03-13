@@ -24,15 +24,26 @@ $address=$row["address"];
 
     if ($pass_word==$Pass_Word)
     {
-	echo "You are logged In"."<br>";
-echo $Email."<br>";
-echo $Gender."<br>";
-echo $Mobile_number."<br>";
-echo $address."<br>";
+		session_start();
+		$_SESSION['Mobile_number']=$Mobile_number;
+	
+	echo "You are logged In...!"."<br>";
+	echo $Email."<br>";
+	echo $Gender."<br>";
+	echo $Mobile_number."<br>";
+	echo $address."<br>";
+	
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?option=dashboard">';//This causes the browser to open the new page after 0 seconds, i.e immediately.
 
 
 
-}
+exit();  ?>
+	
+	<?php
+	echo '<script type="text/javascript">
+			  document.location.href = "http://www.example.com/index.php";  
+		  </script>';
+	}
 
 
 
