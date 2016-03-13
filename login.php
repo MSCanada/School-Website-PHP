@@ -4,18 +4,7 @@ $pass_word=$_POST["password"];
 
 
 
-
-$servername = "mysql.1freehosting.com";
-$username = "u452418890_test";
-$password = "cricket_123";
-$dbname = "u452418890_test";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+include ('credentials.php');
 
 $sql = "select * from university_record where UserName=".("'").$name.("'");
 $result = $conn->query($sql);
